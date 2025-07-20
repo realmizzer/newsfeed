@@ -1,13 +1,13 @@
 import React from 'react';
 import { Alert, Spin, Typography } from 'antd';
 import { NewsCard } from '@/widgets/news-feed';
-import { Post, useGetPostsQuery } from '@/entities/post';
 import { useInfiniteScroll } from '@/features/infinite-scroll';
+import { Post, useGetPostsQuery } from '@/entities/post';
 
 const { Text } = Typography;
-const PAGE_SIZE = 10;
+const PAGE_SIZE = 9;
 
-export const NewsList = () => {
+export const NewsList: React.FC = () => {
   const [skip, setSkip] = React.useState(0);
   const [loadedPosts, setLoadedPosts] = React.useState<Post[]>([]);
   const { data, error, isLoading, isFetching } = useGetPostsQuery({
@@ -46,10 +46,21 @@ export const NewsList = () => {
   }
 
   return (
-    <div>
-      {loadedPosts.map((post) => (
-        <NewsCard key={post.id} post={post} />
-      ))}
+    <>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+          gap: '24px 16px',
+          alignItems: 'stretch',
+        }}
+      >
+        {loadedPosts.map((post) => (
+          <div key={post.id} style={{ display: 'flex', height: '100%' }}>
+            <NewsCard post={post} />
+          </div>
+        ))}
+      </div>
 
       <div ref={loaderRef} style={{ textAlign: 'center', padding: '20px' }}>
         {isFetching && <Spin />}
@@ -57,6 +68,6 @@ export const NewsList = () => {
           <Text type="secondary">No more posts to load</Text>
         )}
       </div>
-    </div>
+    </>
   );
 };

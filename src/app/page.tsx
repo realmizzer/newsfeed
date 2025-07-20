@@ -15,7 +15,7 @@ export default function Home() {
         <Header>
           <Title style={{ color: 'white', margin: 0 }}>News Feed</Title>
         </Header>
-        <Content style={{ padding: '24px 50px' }}>
+        <Content style={{ padding: '16px 128px' }}>
           <NewsList />
         </Content>
       </Layout>
