@@ -23,8 +23,6 @@ export default function Home() {
     return 30;
   };
 
-  console.log(screens);
-
   const isMobile = !screens.md || !screens.lg;
 
   return (
@@ -33,7 +31,7 @@ export default function Home() {
         style={{
           padding: `16px ${getLayoutHorizontalPadding()}px`,
           minHeight: '100vh',
-          gap: 16,
+          gap: isMobile ? 16 : 32,
         }}
       >
         <Header
