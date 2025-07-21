@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={inter.className} style={{ margin: 0 }}>
         <ConfigProvider theme={theme}>{children}</ConfigProvider>
       </body>
     </html>

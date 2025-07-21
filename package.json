@@ -1,5 +1,6 @@
 {
   "name": "newsfeed",
+  "author": "realmizzer",
   "version": "0.1.0",
   "private": true,
   "scripts": {
