@@ -41,9 +41,9 @@ export const NewsCard = (props: NewsCardProps) => {
       </Paragraph>
       <Flex vertical style={{ marginTop: 'auto' }}>
         {/* Tags */}
-        <Flex style={{ marginBottom: 12 }} wrap>
+        <Flex gap={8} style={{ marginBottom: 12 }} wrap>
           {post.tags.map((tag) => (
-            <Tag key={tag} color={'blue'}>
+            <Tag key={tag} color={'blue'} style={{ margin: 0 }}>
               {tag}
             </Tag>
           ))}

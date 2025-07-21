@@ -3,27 +3,54 @@
 import Image from 'next/image';
 import { Provider } from 'react-redux';
 import { Flex, Layout, Typography } from 'antd';
+import useBreakpoint from 'antd/es/grid/hooks/useBreakpoint';
+import { NewsList } from '@/widgets/news-feed';
 import { store } from '@/shared/config/store';
 import AuthorImage from '@/shared/assets/images/author.jpeg';
-import { NewsList } from '@/widgets/news-feed';
 
 const { Header, Content } = Layout;
 const { Title, Text } = Typography;
 
 export default function Home() {
+  const screens = useBreakpoint();
+
+  const getLayoutHorizontalPadding = () => {
+    if (screens.xxl) return 180;
+    if (screens.xl) return 180;
+    if (screens.lg) return 60;
+    if (screens.md) return 60;
+    if (screens.xs) return 30;
+    return 30;
+  };
+
+  console.log(screens);
+
+  const isMobile = !screens.md || !screens.lg;
+
   return (
     <Provider store={store}>
-      <Layout style={{ padding: '16px 180px', minHeight: '100vh' }}>
+      <Layout
+        style={{
+          padding: `16px ${getLayoutHorizontalPadding()}px`,
+          minHeight: '100vh',
+          gap: 16,
+        }}
+      >
         <Header
           style={{
+            flex: 1,
             padding: 0,
-            marginBottom: 16,
             backgroundColor: 'transparent',
           }}
         >
-          <Flex justify={'space-between'} align={'center'}>
+          <Flex vertical={isMobile} justify={'space-between'} align={'center'}>
             <Flex align={'center'}>
-              <Title style={{ margin: 0 }}>Newsfeed</Title>
+              <Title
+                level={1}
+                style={{ margin: 0, marginBottom: isMobile ? 8 : 0 }}
+              >
+                Newsfeed
+              </Title>
             </Flex>
             <Flex gap={8} align={'center'}>
               <Image
