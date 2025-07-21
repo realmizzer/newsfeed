@@ -10,6 +10,9 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Newsfeed',
   description: 'Newsfeed with infinite scroll',
+  icons: {
+    icon: '/logo.ico',
+  },
 };
 
 export default function RootLayout({ children }: PropsWithChildren) {
