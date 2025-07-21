@@ -5,7 +5,7 @@ import { useInfiniteScroll } from '@/features/infinite-scroll';
 import { Post, useGetPostsQuery } from '@/entities/post';
 
 const { Text } = Typography;
-const PAGE_SIZE = 9;
+const PAGE_SIZE = 12;
 
 export const NewsList: React.FC = () => {
   const [skip, setSkip] = React.useState(0);
